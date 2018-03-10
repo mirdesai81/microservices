@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication v1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="multiplication-client.js"></script>
+    <script src="gamification-client.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Welcome to Social Multiplication</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-center">Your new challenge is</h3>
+            <h1 class="text-center">
+                <span class="multiplication-a"></span> x <span class="multiplication-b"></span>
+            </h1>
+            <p>
+            <form id="attempt-form">
+                <div class="form-group">
+                    <label for="result-attempt">Result?</label>
+                    <input type="text" name="result-attempt" id="result-attempt" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="user-alias">Your alias:</label>
+                    <input type="text" name="user-alias" id="user-alias" class="form-control">
+                </div>
+                <input type="submit" value="Check" class="btn btn-default">
+            </form>
+            </p>
+            <div class="result-message"></div>
+
+            <div id="stats-div" style="display: none;">
+                <h2>Your statistics</h2>
+                <table id="stats" class="table">
+                    <tbody>
+                    <tr>
+                        <td class="info">User ID:</td>
+                        <td id="stats-user-id"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Score:</td>
+                        <td id="stats-score"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Badges:</td>
+                        <td id="stats-badges"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <h3>Leaderboard</h3>
+            <table id="leaderboard" class="table">
+                <tr>
+                    <th>User ID</th>
+                    <th>Score</th>
+                </tr>
+                <tbody id="leaderboard-body"></tbody>
+            </table>
+            <div class="text-right">
+                <button id="refresh-leaderboard" class="btn btn-default" type="submit">Refresh</button>
+            </div>
+
+            <div id="results-div" style="display: none;">
+                <h2>Your latest attempts</h2>
+                <table id="results" class="table">
+                    <tr>
+                        <th>Attempt ID</th>
+                        <th>Multiplication</th>
+                        <th>You entered</th>
+                        <th>Correct?</th>
+                    </tr>
+                    <tbody id="results-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

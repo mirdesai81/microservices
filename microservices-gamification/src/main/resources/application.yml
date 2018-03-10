@@ -1,0 +1,61 @@
+spring:
+  profiles:
+      active: development
+  main:
+    banner-mode: "off"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+  datasource:
+    url:  jdbc:h2:file:~/gamification;DB_CLOSE_ON_EXIT=FALSE;
+  rabbitmq:
+    host: localhost
+    password: guest
+    username: guest
+    port: 5672
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: WARN
+    org:
+      assertj: INFO
+    com:
+      microservices:
+        multiplication: DEBUG
+  file: logs/spring-log.log
+
+
+multiplication:
+  exchange: multiplication_exchange
+  solved:
+    key: multiplication.solved
+  queue: gamification_multiplication_queue
+  anything:
+    routing-key: multiplication.*
+
+
+multiplicationHost: http://localhost:8080
+
+---
+spring:
+  profiles: development
+
+server:
+  port: 8081
+---
+spring:
+  profiles: production
+server:
+  port: 9091
+
+
+

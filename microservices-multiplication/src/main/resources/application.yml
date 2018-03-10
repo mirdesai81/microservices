@@ -1,0 +1,54 @@
+spring:
+  profiles:
+      active: development
+  main:
+    banner-mode: "off"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+  datasource:
+    url:  jdbc:h2:file:~/social-multiplication;DB_CLOSE_ON_EXIT=FALSE;
+  rabbitmq:
+      host: localhost
+      password: guest
+      username: guest
+      port: 5672
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: WARN
+    org:
+      assertj: INFO
+    com:
+      microservices:
+        multiplication: DEBUG
+  file: logs/spring-log.log
+
+
+multiplication:
+  exchange: multiplication_exchange
+  solved:
+    key: multiplication.solved
+
+---
+
+spring:
+  profiles: development
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: production
+server:
+  port: 9090
