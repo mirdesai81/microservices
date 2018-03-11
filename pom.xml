@@ -13,6 +13,7 @@
   <modules>
     <module>microservices-multiplication</module>
     <module>microservices-gamification</module>
+    <module>gateway</module>
   </modules>
 
   <parent>
