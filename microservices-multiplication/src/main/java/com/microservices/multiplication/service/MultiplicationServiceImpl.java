@@ -80,6 +80,6 @@ public class MultiplicationServiceImpl implements MultiplicationService {
 
     @Override
     public MultiplicationResultAttempt getResultById(Long resultId) {
-        return attemptRepository.findOne(resultId);
+        return attemptRepository.findById(resultId).orElse(null);
     }
 }

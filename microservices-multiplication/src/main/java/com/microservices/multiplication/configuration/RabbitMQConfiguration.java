@@ -1,7 +1,8 @@
 package com.microservices.multiplication.configuration;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -22,7 +23,7 @@ public class RabbitMQConfiguration {
     @Autowired
     private Environment env;
 
-    //private static final Logger logger = LogManager.getLogger(RabbitMQConfiguration.class);
+    private static final Logger logger = LogManager.getLogger(RabbitMQConfiguration.class);
 
 
     @Bean
