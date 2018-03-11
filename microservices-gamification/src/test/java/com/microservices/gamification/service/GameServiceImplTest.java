@@ -57,6 +57,11 @@ public class GameServiceImplTest {
         given(scoreCardRepository.getTotalScoreForUser(userId)).willReturn(totalScore);
         given(scoreCardRepository.findByUserIdOrderByScoreTimestampDesc(userId)).willReturn(Collections.singletonList(scoreCard));
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId)).willReturn(Collections.emptyList());
+        // the attempt
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                "john_doe", 10, 10, 100, true);
+        given(attemptClient.retrieveMultiplicationResultAttemptById(attemptId))
+                .willReturn(attempt);
 
         //when
         GameStats stats = gameService.newAttemptForUser(userId,attemptId,true);
@@ -81,7 +86,10 @@ public class GameServiceImplTest {
         // the first won badge is already there
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId))
                 .willReturn(Collections.singletonList(firstWonBadge));
-
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                "john_doe", 10, 10, 100, true);
+        given(attemptClient.retrieveMultiplicationResultAttemptById(attemptId))
+                .willReturn(attempt);
 
         // when
         GameStats iteration = gameService.newAttemptForUser(userId, attemptId, true);
@@ -104,6 +112,10 @@ public class GameServiceImplTest {
         given(scoreCardRepository.findByUserIdOrderByScoreTimestampDesc(userId)).willReturn(createNScoreCards(10,userId));
 
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId)).willReturn(Collections.singletonList(firstBadge));
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                "john_doe", 10, 10, 100, true);
+        given(attemptClient.retrieveMultiplicationResultAttemptById(attemptId))
+                .willReturn(attempt);
 
         // when
         GameStats iteration = gameService.newAttemptForUser(userId, attemptId, true);
@@ -156,7 +168,10 @@ public class GameServiceImplTest {
                 .willReturn(Collections.singletonList(scoreCard));
         given(badgeCardRepository.findByUserIdOrderByBadgeTimestampDesc(userId))
                 .willReturn(Collections.emptyList());
-
+        MultiplicationResultAttempt attempt = new MultiplicationResultAttempt(
+                "john_doe", 10, 10, 101, false);
+        given(attemptClient.retrieveMultiplicationResultAttemptById(attemptId))
+                .willReturn(attempt);
 
         // when
         GameStats iteration = gameService.newAttemptForUser(userId, attemptId, false);

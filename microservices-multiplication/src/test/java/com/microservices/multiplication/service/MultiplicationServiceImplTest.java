@@ -137,13 +137,14 @@ public class MultiplicationServiceImplTest {
     public void retrieveResultByIdTest() {
         //given
         Long attemptId = 1L;
-        MultiplicationResultAttempt expected = new MultiplicationResultAttempt(new User("john_doe"),new Multiplication(50,60),3000,true);
-        given(attemptRepository.findOne(attemptId)).willReturn(expected);
+        MultiplicationResultAttempt multiplicationResultAttempt = new MultiplicationResultAttempt(new User("john_doe"),new Multiplication(50,60),3000,true);
+        Optional<MultiplicationResultAttempt> expected = Optional.of(multiplicationResultAttempt);
+        given(attemptRepository.findById(attemptId)).willReturn(expected);
 
         //when
         MultiplicationResultAttempt result = multiplicationServiceImpl.getResultById(attemptId);
 
         //then
-        assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(multiplicationResultAttempt);
     }
 }
