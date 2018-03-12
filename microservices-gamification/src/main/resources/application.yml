@@ -43,7 +43,7 @@ multiplication:
     routing-key: multiplication.*
 
 
-multiplicationHost: http://localhost:8080
+multiplicationHost: http://localhost:8000/api
 
 ---
 spring:
