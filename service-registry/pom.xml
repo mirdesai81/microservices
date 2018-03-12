@@ -8,14 +8,12 @@
 		<version>1.0</version>
 	</parent>
 	<groupId>com.microservices</groupId>
-	<artifactId>gateway</artifactId>
+	<artifactId>service-registry</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>gateway</name>
-	<description>Gateway API </description>
-
-
+	<name>service-registry</name>
+	<description>Spring Boot Service Registry App using Eureka</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,14 +25,14 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
@@ -48,6 +46,15 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 	<repositories>
 		<repository>

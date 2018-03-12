@@ -1,6 +1,4 @@
 spring:
-  profiles:
-      active: development
   main:
     banner-mode: "off"
   h2:
@@ -21,7 +19,7 @@ spring:
     port: 5672
 
 server:
-  port: 8081
+  port: ${PORT:8081}
 
 logging:
   level:
@@ -43,19 +41,21 @@ multiplication:
     routing-key: multiplication.*
 
 
+eureka:
+  client:
+    service-url:
+      default-zone: http://[myIP@]:8761/eureka/
+    instance:
+        leaseRenewalIntervalInSeconds: 1
+        leaseExpirationDurationInSeconds: 2
+
+ribbon:
+  eureka:
+    enabled: true
+
+
 multiplicationHost: http://localhost:8000/api
 
----
-spring:
-  profiles: development
-
-server:
-  port: 8081
----
-spring:
-  profiles: production
-server:
-  port: 9091
 
 
 
