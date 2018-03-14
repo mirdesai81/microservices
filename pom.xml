@@ -11,6 +11,7 @@
   <name>Microservices Parent Project</name>
  
   <modules>
+    <module>service-registry</module>
     <module>microservices-multiplication</module>
     <module>microservices-gamification</module>
     <module>gateway</module>

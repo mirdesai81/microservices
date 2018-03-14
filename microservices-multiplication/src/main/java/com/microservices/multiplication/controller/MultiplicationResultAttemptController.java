@@ -5,7 +5,9 @@ import com.microservices.multiplication.service.MultiplicationService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +16,18 @@ import java.util.List;
 /**
  * Created by mihir.desai on 3/6/2018.
  */
+@Slf4j
 @RestController
 @RequestMapping("/results")
 public class MultiplicationResultAttemptController {
 
     private  MultiplicationService multiplicationService;
+    private int serverPort;
 
     @Autowired
-    MultiplicationResultAttemptController(MultiplicationService multiplicationService) {
+    MultiplicationResultAttemptController(MultiplicationService multiplicationService,@Value("${server.port}") int serverPort) {
         this.multiplicationService = multiplicationService;
+        this.serverPort = serverPort;
     }
 
     @PostMapping
@@ -42,6 +47,8 @@ public class MultiplicationResultAttemptController {
 
     @GetMapping("/{resultId}")
     ResponseEntity<MultiplicationResultAttempt> getResultById(@PathVariable("resultId") final Long resultId) {
+        log.debug("Retrieving result {} from server @ {}",
+                resultId, serverPort);
         return ResponseEntity.ok(multiplicationService.getResultById(resultId));
     }
 
