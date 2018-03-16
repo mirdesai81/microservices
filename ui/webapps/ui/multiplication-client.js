@@ -9,11 +9,16 @@ function updateMultiplication() {
         url: SERVER_URL + "/multiplications/random"
     }).then(function(data) {
         // Cleans the form
+        $('.challenge').show();
+        $('.result-message').empty();
         $("#attempt-form").find( "input[name='result-attempt']" ).val("");
         $("#attempt-form").find( "input[name='user-alias']").val("");
         // Gets a random challenge from API and loads the data in the HTML
         $('.multiplication-a').empty().append(data.factorA);
         $('.multiplication-b').empty().append(data.factorB);
+    }, function(xhr,status,error) {
+        $('.challenge').hide();
+        $('.result-message').empty().append("<p class='bg-danger text-center'>"+xhr.responseText.message+"</p>");
     });
 }
 function updateResults(alias) {
@@ -22,6 +27,7 @@ function updateResults(alias) {
         async: false,
         url: SERVER_URL + "/results?alias=" + alias,
         success: function(data) {
+
             $('#results-div').show();
             $('#results-body').empty();
             data.forEach(function(row) {

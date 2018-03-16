@@ -4,13 +4,10 @@ server:
 info:
   component: Edge Server
 
-endpoints:
-  restart:
-    enabled: true
-  shutdown:
-    enabled: true
+management:
   health:
-    sensitive: false
+    rabbit:
+      enabled: false
 
 zuul:
   ignoredServices: '*'
@@ -42,7 +39,14 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     registerWithEureka: false
+  instance:
+    health-check-url: /health
+    status-page-url-path: /info
 
+niws:
+  loadbalancer:
+    availabilityFilteringRule:
+      filterCircuitTripped: false.
 
 logging:
   level:

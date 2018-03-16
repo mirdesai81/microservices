@@ -13,9 +13,9 @@ spring:
   datasource:
     url:  jdbc:h2:file:~/gamification;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;
   rabbitmq:
-    host: localhost
-    password: guest
-    username: guest
+    host: 192.168.28.61
+    password: Ansa@Dev
+    username: ansadev
     port: 5672
 
 server:
@@ -44,10 +44,10 @@ multiplication:
 eureka:
   client:
     service-url:
-      default-zone: http://[myIP@]:8761/eureka/
-    instance:
-        leaseRenewalIntervalInSeconds: 1
-        leaseExpirationDurationInSeconds: 2
+      default-zone: ${vcap.services.discovery-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+      lease-expiration-duration-in-seconds: 2
+      lease-renewal-interval-in-seconds: 1
 
 ribbon:
   eureka:
